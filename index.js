@@ -1,13 +1,14 @@
 // importing express
 const express = require("express");
 const UserRouter = require("./routers/UserRouter");
+const ProductRouter = require("./routers/ProductRouter")
 
 // initialize express
 const app = express();
 const port = 5000;
 
 // these are middlewares
-
+app.use("/product", ProductRouter )
 app.use("/user", UserRouter);
 
 ///endpoint or route
@@ -25,6 +26,12 @@ app.get("/update", (req, res) => {
 });
 
 //starting the server
-app.listen(port, () => {
-  console.log("Server started successfully");
+app.listen(port, (err) => {
+  if(err){
+    console.log("failed" + err);
+  }
+  else { 
+    console.log("Server started successfully");
+
+  }
 });
