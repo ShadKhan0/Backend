@@ -1,26 +1,30 @@
 const express = require("express");
 const router = express.Router();
-const Model = require('../models/UserModel')
+const Model = require("../models/UserModel");
 
-router.get("/add", (req, res) => {
-  res.send("response from user add");
+router.post("/add", (req, res) => {
+  console.log(req.body);
+
+  new Model(req.body)
+    .save()
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
+
 router.get("/getall", (req, res) => {
-  res.send("response from user getall");
+  Model.find()
+    .then((result) => {
+      res.status(200).json(result)
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
-router.get("/getbyid", (req, res) => {
-  res.send("response from user getbyid");
-});
-router.get("/update", (req, res) => {
-  res.send("response from user update");
-});
-router.get("/delete", (req, res) => {
-  res.send("response from user delete");
-});
-
-//getall
-//getbyid
-//update
-//delete
 
 module.exports = router;

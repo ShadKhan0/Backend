@@ -8,8 +8,11 @@ const app = express();
 const port = 5000;
 
 // these are middlewares
-app.use("/product", ProductRouter )
+app.use(express.json()); //sequence is imp it firsts convert all json format to javascript to be interpreted by js file here
+app.use("/product", ProductRouter);
 app.use("/user", UserRouter);
+
+
 
 ///endpoint or route
 app.get("/", (req, res) => {
