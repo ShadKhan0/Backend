@@ -4,7 +4,7 @@ const mySchema = new Schema({
   title: String,
   brand: String,
   category: String,
-  model: String,
+  model: { type: String, default: "Base Model" },
   price: Number,
   image: String,
   createdAt: { type: Date, default: Date.now },
