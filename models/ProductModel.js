@@ -9,4 +9,4 @@ const mySchema = new Schema({
   image: String,
   createdAt: { type: Date, default: Date.now },
 });
-module.exports = model("products", mySchema);
+module.exports = model('products', mySchema);
